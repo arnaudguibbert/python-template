@@ -1,3 +1,5 @@
+OUTPUT_BADGE_PATH=./reports/coverage/badge.svg
+
 .PHONY: py-format
 py-format:
 	uv run ruff format
@@ -28,7 +30,14 @@ py-debug-test:
 
 .PHONY: py-unit-test
 py-unit-test:
-	uv run pytest --cov=$(PROJECT_NAME) --cov-report term-missing tests/unit
+	uv run pytest --cov=$(PROJECT_NAME) \
+		--cov-report term-missing \
+		--cov-report xml:reports/coverage/coverage.xml \
+		tests/unit
+
+.PHONY: py-unit-test-badge
+py-unit-test-badge:
+	uv run genbadge coverage --output-file $(OUTPUT_BADGE_PATH)
 
 .PHONY: py-test
 py-test:

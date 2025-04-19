@@ -1,5 +1,3 @@
-# README Template
-
 # {{ cookiecutter.project_name }}
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
@@ -7,6 +5,7 @@
 [![Mypy Latest Version](https://img.shields.io/badge/mypy-checked-blue)](https://github.com/python/mypy)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Coverage Status](./reports/coverage/badge.svg?dummy=8484744)]()
 
 ---
 

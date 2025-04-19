@@ -7,9 +7,10 @@ name = "{{ cookiecutter.project_name }}"
 description = "{{ cookiecutter.description }}"
 requires-python = "<4.0,>=3.13"
 license = "MIT"
-dynamic = ["readme",
-           "version",
-           ]
+dynamic = [
+    "readme",
+    "version",
+]
 dependencies = [
 ]
 
@@ -25,12 +26,9 @@ dev = [
     "ruff>=0.9.7",
     "mypy>=1.15.0",
     "pytest>=8.3.4",
-    "types-pyyaml>=6.0.12.20241230",
-    "types-requests>=2.32.0.20250301",
     "pytest-cov>=6.0.0",
     "pydoclint>=0.6.2",
     "pre-commit>=4.1.0",
-    "deterministic-zip>=0.1",
     "setuptools>=77.0.3",
     "genbadge[coverage]>=1.1.2",
 ]

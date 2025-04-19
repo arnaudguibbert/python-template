@@ -1,0 +1,58 @@
+name: build
+concurrency:
+  group: build
+  cancel-in-progress: false
+
+on:
+  workflow_call:
+    inputs:
+      package_dir:
+        required: False
+        default: ""
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      WORKING_DIR: ${{ github.workspace }}/${{ inputs.package_dir }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: init environment
+        working-directory: ${{ env.WORKING_DIR }}
+        run: make env-setup-dev
+
+      - name: ruff formatting check
+        if: ${{ !cancelled() }}
+        working-directory: ${{ env.WORKING_DIR }}
+        run: make py-format-check
+
+      - name: ruff linting
+        if: ${{ !cancelled() }}
+        working-directory: ${{ env.WORKING_DIR }}
+        run: make py-lint-check
+
+      - name: mypy
+        if: ${{ !cancelled() }}
+        working-directory: ${{ env.WORKING_DIR }}
+        run: make py-analyze
+
+      - name: Unit tests
+        id: unit_test
+        if: ${{ !cancelled() }}
+        working-directory: ${{ env.WORKING_DIR }}
+        run: make py-unit-test
+
+      - name: Badge tests
+        if: ${{ steps.unit_test.outcome }} == "success"
+        working_directory: ${{ env.WORKING_DIR }}
+        run: make py-unit-test-badge
+
+      - name: documentation linting
+        if: ${{ !cancelled() }}
+        working-directory: ${{ env.WORKING_DIR }}
+        run: make py-doclint
