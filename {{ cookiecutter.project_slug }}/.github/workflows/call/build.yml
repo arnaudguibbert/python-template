@@ -49,7 +49,7 @@ jobs:
 
       - name: Badge tests
         if: ${{ steps.unit_test.outcome }} == "success"
-        working_directory: ${{ env.WORKING_DIR }}
+        working-directory: ${{ env.WORKING_DIR }}
         run: make py-unit-test-badge
 
       - name: documentation linting

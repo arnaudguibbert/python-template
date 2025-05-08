@@ -1,0 +1,29 @@
+name: cicd
+concurrency: 
+  group: cicd
+  cancel-in-progress: false
+
+on:
+  push:
+
+jobs:
+  test-template:
+    runs-on: ubuntu-latest
+    env:
+      TEST_PROJECT_SLUG: rootpkg
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install cookiecutter
+        run: |
+          uv venv
+          uv pip install cookiecutter
+        
+      - name: create-test-project
+        run: |
+          make TEST_PROJECT_SLUG=${{ env.TEST_PROJECT_SLUG }} \
+            create-tmp-project create-tmp-project
