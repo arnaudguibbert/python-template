@@ -5,7 +5,7 @@ This repository contains a **cookie cutter** template for python projects using 
 # Dependencies
 
 - Python >= 3.10
-- UV >= 0.6.0
+- cookiecutter
 
 # Getting started
 
@@ -14,8 +14,8 @@ This repository contains a **cookie cutter** template for python projects using 
 ### From Github
 
 To clone the template on your local machine simply run the following commands:
+
 ```bash
-uv pip install cookiecutter
 cookiecutter https://github.com/arnaudguibbert/python-template.git
 ```
 
@@ -27,18 +27,15 @@ Additionnally, if you want to download a specific version of the template you ca
 cookiecutter https://github.com/arnaudguibbert/python-template.git --checkout v0.1.0
 ```
 
-### From local
+## Working with the template
 
-Alternatively you can clone the github repository locally and run cookiecutter with a local target.
+### Understanding the structure of the project
 
-```bash
-git clone https://github.com/arnaudguibbert/python-template.git
-cookiecutter python-template
-```
+If you are not familiar with standard python project structure or if it is your first time using this template, we recommend you to first read the [About the template structure]() documentation. It goes through each file of the template and explains how to work with it. 
 
-## Working with the templates
+### Make commands
 
-
+### Common operations
 
 # Template inputs
 
