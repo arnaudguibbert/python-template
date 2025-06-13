@@ -26,3 +26,38 @@ jobs:
         run: |
           make TEST_PROJECT_DIR=${{ env.TEST_PROJECT_DIR }} \
             create-tmp-project create-tmp-project
+
+  tag-version:
+    runs-on: ubuntu-latest
+    # needs: test-template
+    # if: github.ref_name == 'main' || github.ref_name == 'develop'
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.2.1
+        with:
+          versionSpec: '6.3.x'
+
+      - name: Determine Version
+        id: versioning
+        uses: gittools/actions/gitversion/execute@v3.2.1
+        with:
+          useConfigFile: true
+          configFilePath: GitVersion.yaml
+
+      - name: Log Version
+        run: |
+          echo ${{ steps.versioning.outputs.FullsemVer }}
+
+      # - name: Create tag
+      #   uses: actions/github-script@v5
+      #   env:
+      #     TAG_NAME: ${{ steps.versioning.outputs.FullsemVer }}
+      #   with:
+      #     script: |
+      #       const script = require('./scripts/js/tag_commit.js')
+      #       console.log(script({github, context}))
+          
+
