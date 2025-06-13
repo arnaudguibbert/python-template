@@ -8,12 +8,14 @@ This repository provides a [**Cookiecutter**](https://cookiecutter.readthedocs.i
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 Before using the template, make sure you have the following installed:
 
 - [**Python**](https://www.python.org/downloads/) version **3.10 or higher**
 - [**Cookiecutter**](https://cookiecutter.readthedocs.io/en/stable/installation.html)
+
+---
 
 # Getting Started
 
@@ -47,24 +49,122 @@ If you're unfamiliar with the standard Python project layout or are using this t
 
 The template includes a `Makefile` with several predefined commands that streamline common development workflows, including:
 
+- Installing python environment and dependencies using [uv](https://astral.sh/blog/introducing-uv/)
 - Linting code with [Ruff](https://docs.astral.sh/ruff/)
-- Running test suites
-- Installing dependencies using [uv](https://astral.sh/blog/introducing-uv/)
+- Type checking code with 
+- Running test suite
 
-Consult the generated `Makefile` in your project for the full list of available commands and usage examples.
+> [!IMPORTANT]
+> We highly recommend to use make commands when possible to ensure consistency and security.
+
+Consult this [Makefile section](./docs/structure.md#makefiles) to get more details on make targets available.
+
+> [!NOTE]
+> All make commands should be run from the root directory of your python project.
 
 ### Common Operations
 
-<!-- After generating your project, you’ll commonly perform operations such as:
-
-- Running tests using your preferred test runner
-- Formatting and linting source code with Ruff
-- Installing dependencies using `uv pip install`
-- Updating metadata and configuration in `pyproject.toml` -->
+Once your project is set up, you’ll frequently perform a set of standard operations. This section describes how to carry out those tasks efficiently using the included `Makefile` commands and `uv`.
 
 ---
 
-## Template Inputs
+#### 🐍 Set Up Your Python Environment
+
+Set up your Python virtual environment and install the main dependencies:
+
+```
+make env-setup
+```
+
+To install development dependencies as well (e.g., for testing, linting, formatting), use:
+
+```
+make env-setup-dev
+```
+
+> [!TIP]
+> This uses `uv venv` under the hood to ensure fast and isolated environments.
+
+---
+
+#### 📦 Manage Dependencies with `uv`
+
+Adding a new package (e.g., `fastapi`):
+
+```
+uv add fastapi
+```
+
+Specifying a version using [semantic versioning](https://masterminds.github.io/sprig/semver.html):
+
+```
+uv add fastapi~=0.100.1
+```
+
+Removing an unused package:
+
+```
+uv remove fastapi
+```
+
+> [!NOTE]
+> Dependency changes will automatically update your `pyproject.toml` and `uv.lock` files.
+
+---
+
+#### 🧹 Format Code
+
+Run Ruff to automatically format your Python code:
+
+```
+make py-format
+```
+
+---
+
+#### 🕵️‍♀️ Lint Your Code
+
+Run static checks and enforce code style using Ruff:
+
+```
+make py-lint
+```
+
+To additionally lint your docstrings:
+
+```
+make py-doclint
+```
+
+---
+
+#### 🧠 Type Checking
+
+Check for type errors using static analysis (via `mypy`):
+
+```
+make py-analyze
+```
+
+---
+
+#### 🧪 Run Unit Tests
+
+Execute your test suite with:
+
+```
+make py-unit-test
+```
+
+> [!INFO]
+> Tests are expected to be located in the `tests/` directory, and should follow the standard `pytest` conventions.
+
+---
+
+All `make` commands must be run from the **root directory** of your Python project to function correctly.
+
+
+# Template Inputs
 
 When you execute `cookiecutter`, you’ll be prompted to fill in the following inputs:
 
@@ -76,11 +176,12 @@ When you execute `cookiecutter`, you’ll be prompted to fill in the following i
 
 ---
 
-## References
+# References
 
 - [Python (official documentation)](https://docs.python.org/3/)
 - [Cookiecutter](https://cookiecutter.readthedocs.io/en/stable/)
 - [uv by Astral](https://astral.sh/blog/introducing-uv/)
 - [ruff by Astral](https://docs.astral.sh/ruff/)
+- [mypy](https://mypy-lang.org/)
 - [ty (planned)](https://github.com/astral-sh/ty)
 
