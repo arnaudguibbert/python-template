@@ -4,7 +4,7 @@ module.exports = ({github, context}) => {
     github.rest.git.createRef({
         owner: context.repo.owner,
         repo: context.repo.repo,
-        ref: `refs/tags/${tag_name}`,
+        ref: `refs/tags/v${tag_name}`,
         sha: context.sha
     })
 }
