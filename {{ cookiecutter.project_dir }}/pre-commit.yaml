@@ -1,0 +1,37 @@
+repos:
+- repo: local
+  hooks:
+  - id: pytest-check
+    name: run unit tests
+    entry: make py-unit-test
+    language: system
+    pass_filenames: false
+    always_run: true
+    types: [python]
+  - id: mypy
+    name: run mypy
+    entry: make py-analyze
+    language: system
+    pass_filenames: false
+    types: [python]
+  - id: ruff
+    name: run ruff format and checks
+    entry: make py-structure
+    language: system
+    pass_filenames: false
+    types: [python]
+  - id: pydoclint
+    name: run pydoclint for documentation linting
+    entry: make py-doclint
+    language: system
+    pass_filenames: false
+    types: [python]
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: check-yaml
+    args: [--allow-multiple-documents]
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+  - id: check-merge-conflict

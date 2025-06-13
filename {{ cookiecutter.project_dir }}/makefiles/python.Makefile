@@ -34,9 +34,6 @@ py-unit-test:
 		--cov-report term-missing \
 		--cov-report xml:reports/coverage/coverage.xml \
 		tests/unit
-
-.PHONY: py-unit-test-badge
-py-unit-test-badge:
 	uv run genbadge coverage --output-file $(OUTPUT_BADGE_PATH)
 
 .PHONY: py-test
