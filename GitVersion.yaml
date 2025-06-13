@@ -1,0 +1,3 @@
+workflow: GitFlow/v1
+mode: ContinuousDelivery
+tag-prefix: '[vV]?'
