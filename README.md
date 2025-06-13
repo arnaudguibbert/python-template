@@ -156,7 +156,7 @@ Execute your test suite with:
 make py-unit-test
 ```
 
-> [!INFO]
+> [!NOTE]
 > Tests are expected to be located in the `tests/` directory, and should follow the standard `pytest` conventions.
 
 ---
