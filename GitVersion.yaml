@@ -1,0 +1,3 @@
+workflow: GitFlow/v1
+mode: ContinuousDeployment
+tag-prefix: '[vV]?'
