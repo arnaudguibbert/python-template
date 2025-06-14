@@ -1,0 +1,111 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ cookiecutter.project_name }}"
+description = "{{ cookiecutter.description }}"
+requires-python = "<4.0,>=3.13"
+license = "MIT"
+dynamic = [
+    "readme",
+    "version",
+]
+dependencies = [
+]
+
+[tool.setuptools.dynamic]
+readme = {file = "README"}
+version = {file = "VERSION"}
+
+[tool.uv]
+default-groups = ["dev"]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.7",
+    "mypy>=1.15.0",
+    "pytest>=8.3.4",
+    "pytest-cov>=6.0.0",
+    "pydoclint>=0.6.2",
+    "pre-commit>=4.1.0",
+    "setuptools>=77.0.3",
+    "genbadge[coverage]>=1.1.2",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["{{ cookiecutter.project_name }}*"]
+# Comment next line if you intend to use namespace pkgs
+namespaces = false
+
+# [project.urls]
+# homepage = ""
+# repository = ""
+
+[tool.mypy]
+packages = ["{{ cookiecutter.project_name }}", "tests"]
+ignore_missing_imports = true
+warn_unused_configs = true
+# If you are using namespace packages, set the two following properties to true
+# And uncomment mypy_path
+explicit_package_bases = false
+namespace_packages = false
+
+# [[tool.mypy.overrides]]
+# Put in the module list, all the modules without stubs
+# module = []
+# ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 80
+indent-width = 4
+# target-version = "py312"
+output-format = "concise"
+show-fixes = true
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = ["ALL"] # Selecting all rules
+ignore = [
+    "COM812", # Trailing comma missing
+    "ISC001", # Implicitly concatenated string literals on one line
+    "D104", # Missing docstring in public package
+    "D100", # Missing docstring in public module
+    "D401", # First line of docstring should be in imperative mood
+    "ANN401", # Forbidding Any typing
+    "D105", # Docstring in magic methods
+    "D205", # Blank line after summary
+    "PLR0913", # Too many arguments
+    "D107", # missing docstring in __init__
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+    "F401", 
+    "F403", 
+    "D104",
+]
+"tests/*" = [
+    "S101", # Use of asserts
+    "D", # docstring
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.pytest.ini_options]
+markers = [
+    "debug: tests being tested",
+    "dummy: dummy test to make sur tests are working"
+]
+addopts = "-ra -q -c pytest.ini"
+testpaths = [
+    "tests",
+]

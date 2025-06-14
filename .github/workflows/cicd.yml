@@ -1,0 +1,66 @@
+name: cicd
+concurrency: 
+  group: cicd
+  cancel-in-progress: false
+
+on:
+  push:
+
+jobs:
+  test-template:
+    runs-on: ubuntu-latest
+    env:
+      TEST_PROJECT_DIR: rootpkg
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: install cookiecutter
+        run: |
+          uv venv
+          uv pip install cookiecutter
+        
+      - name: create-test-project
+        run: |
+          make TEST_PROJECT_DIR=${{ env.TEST_PROJECT_DIR }} \
+            create-tmp-project create-tmp-project
+
+  tag-version:
+    runs-on: ubuntu-latest
+    if: github.ref_name == 'main' || github.ref_name == 'develop'
+    permissions:
+      contents: write
+    steps:
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install GitVersion
+        uses: gittools/actions/gitversion/setup@v3.2.1
+        with:
+          versionSpec: '6.3.x'
+
+      - name: Determine Version
+        id: versioning
+        uses: gittools/actions/gitversion/execute@v3.2.1
+        with:
+          useConfigFile: true
+          configFilePath: GitVersion.yaml
+
+      - name: Log Version
+        run: |
+          echo ${{ steps.versioning.outputs.FullsemVer }}
+
+      - name: Tag commit
+        uses: actions/github-script@v5
+        env:
+          TAG_NAME: ${{ steps.versioning.outputs.FullsemVer }}
+        with:
+          script: |
+            const script = require('./scripts/js/tag_commit.js')
+            console.log(script({github, context}))
+          
+

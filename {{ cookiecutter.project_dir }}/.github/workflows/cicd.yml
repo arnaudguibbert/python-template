@@ -1,0 +1,22 @@
+name: cicd
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '**'
+      - '!**.md'
+  pull_request:
+    branches:
+      - master
+
+permissions:
+  id-token: write
+  packages: read
+  contents: write
+
+jobs:
+
+  build:
+    uses: ./.github/workflows/call/build.yml
+    secrets: inherit

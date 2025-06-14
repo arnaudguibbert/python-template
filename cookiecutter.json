@@ -1,0 +1,9 @@
+{
+    "project_name": "",
+    "project_dir": "",
+    "description": "",
+    "_copy_without_render": [
+        "*.github/workflows"
+    ]
+}
+  
