@@ -17,13 +17,13 @@ After cloning the template with cookiecutter, one will end up with the following
 
 ```
 source
-├── .github                             
+├── .github[Optional]                             
 │   └── workflows                       -> Github CICD workflows 
 │       ├── call                        -> workflow_call
 │       │   ├── build.yml               -> build workflow
 │       │   └── publish.yml             -> publish workflow
 │       └── cicd.yml                    -> CICD workflow
-├── .vscode
+├── .vscode[Optional]
 │   └── settings.json                   -> VSCode workspace settings
 ├── makefiles                                   
 │   ├── env.Makefile                    -> Python environment makefile commands
@@ -57,8 +57,8 @@ For every file specified above we will describe its content and give insights on
       - `call`
         - [`build.yml`](#buildyml)
       - [`cicd.yml`](#cicdyml)
-  <!-- - [`.vscode`](#vscode)
-    - [`settings.json`](#settingsjson) -->
+  - [`.vscode`](#vscode)
+    - [`settings.json`](#settingsjson)
   - [`makefiles`](#makefiles)
     - [`env.Makefile`](#envmakefile)
     - [`python.Makefile`](#pythonmakefile)
@@ -336,7 +336,7 @@ pre-commit install
 The `.github` folder contains GitHub Actions workflows that define automated CI/CD pipelines for the project. These workflows help ensure code quality by running checks like linting, formatting, type analysis, and unit tests on push or pull request events.
 
 > [!NOTE]
-> This folder is **optional** and can be safely deleted if you're not using GitHub CI/CD. It's intended for users who want to integrate automated pipelines directly with GitHub.
+> This folder is **optional** and can be not created by setting `include_gh_cicd` to `False` or safely deleted if you're not using GitHub CI/CD. It's intended for users who want to integrate automated pipelines directly with GitHub.
 
 ### `build.yml`
 
@@ -370,7 +370,7 @@ It calls the `build.yml` workflow to execute all quality checks, providing a con
 The `.vscode` folder contains editor-specific configuration files for [Visual Studio Code](https://code.visualstudio.com/). It helps standardize development experience across team members using VS Code.
 
 > [!NOTE]
-> This folder is **optional** and can be safely deleted if you're not using VS Code. It exists to enhance convenience for developers using that editor.
+> This folder is **optional** and can be not created by setting `include_vscode` to `False` or be safely deleted if you're not using VS Code. It exists to enhance convenience for developers using that editor.
 
 ### `settings.json`
 
