@@ -173,7 +173,7 @@ When you execute `cookiecutter`, you’ll be prompted to fill in the following i
 | `project_name`  | The name of your Python package or library. Appears in source code and configuration files. | `null`  | string | Yes |
 | `project_dir`   | The name of the directory where the project will be generated. Typically matches `project_name`. | `null`  | string | Yes |
 | `description`   | A short description of your project. Added to the `README.md` and `pyproject.toml`. | `null`  | string | Yes |
-| `include_gh_cicd` | Whether of not to include the Github CICD files (build and push workflows) | `False` | boolean | No |
+| `include_gh_cicd` | Whether of not to include the Github CICD files (build and push (soon) workflows) | `False` | boolean | No |
 | `include_vscode` | Whether of not to include the vscode settings for this project (`.vscode` folder) | `False` | boolean | No |
 
 ---

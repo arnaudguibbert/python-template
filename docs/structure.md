@@ -299,9 +299,7 @@ This Makefile defines targets for code quality, testing, formatting, and analysi
 | `py-lint-check`     | Runs `ruff check` without making changes.                                                       |
 | `py-structure`      | Runs both `py-format` and `py-lint` to enforce code standards.                                   |
 | `py-analyze`        | Runs static type checks using `mypy`.                                                           |
-| `py-debug-test`     | Executes tests marked with `debug`, showing output in the terminal.                             |
 | `py-unit-test`      | Runs unit tests with coverage, generates a coverage badge using `genbadge`.                    |
-| `py-test`           | Runs all tests with coverage reporting to the terminal.                                         |
 | `py-doclint`        | Lints docstrings using `pydoclint` with a specified style (`DOCTSTRING_STYLE` env variable).    |
 
 📘 **References:**
@@ -338,7 +336,7 @@ The `.github` folder contains GitHub Actions workflows that define automated CI/
 > [!NOTE]
 > This folder is **optional** and can be not created by setting `include_gh_cicd` to `False` or safely deleted if you're not using GitHub CI/CD. It's intended for users who want to integrate automated pipelines directly with GitHub.
 
-### `build.yml`
+### `_build.yml`
 
 This is a reusable workflow designed to be called by other GitHub workflows. It performs the following tasks:
 
@@ -359,7 +357,7 @@ This is the main CI/CD workflow. It triggers on:
 - Pushes (excluding Markdown files)
 - Pull requests targeting the `master` branch
 
-It calls the `build.yml` workflow to execute all quality checks, providing a consistent and automated feedback loop for each commit or PR.
+It calls the `_build.yml` workflow to execute all quality checks, providing a consistent and automated feedback loop for each commit or PR.
 
 📘 **Reference:** [GitHub Actions - Workflow Syntax](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions)
 
