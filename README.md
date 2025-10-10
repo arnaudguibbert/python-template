@@ -1,4 +1,4 @@
-# 🐍 Python Project Template for UV
+# 🐍 Python Project Template designed for [astral](https://astral.sh/) ecosystem
 
 This repository provides a [**Cookiecutter**](https://cookiecutter.readthedocs.io/en/stable/) template designed for creating consistent and modern Python project structures. It is tailored to projects using the [**Astral**](https://astral.sh/) tooling ecosystem, namely:
 
