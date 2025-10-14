@@ -2,6 +2,8 @@
     "project_name": "",
     "project_dir": "",
     "description": "",
+    "include_gh_cicd": false,
+    "include_vscode_settings": false,
     "_copy_without_render": [
         "*.github/workflows"
     ]

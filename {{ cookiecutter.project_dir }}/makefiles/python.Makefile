@@ -24,10 +24,6 @@ py-structure:
 py-analyze:
 	uv run mypy
 
-.PHONY: py-debug-test
-py-debug-test:
-	uv run pytest -s tests -m debug
-
 .PHONY: py-unit-test
 py-unit-test:
 	uv run pytest --cov=$(PROJECT_NAME) \
@@ -35,10 +31,6 @@ py-unit-test:
 		--cov-report xml:reports/coverage/coverage.xml \
 		tests/unit
 	uv run genbadge coverage --output-file $(OUTPUT_BADGE_PATH)
-
-.PHONY: py-test
-py-test:
-	uv run pytest --cov=$(PROJECT_NAME) --cov-report term-missing tests
 
 .PHONY: py-doclint
 py-doctlint:

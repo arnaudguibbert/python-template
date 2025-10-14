@@ -25,7 +25,7 @@ jobs:
       - name: create-test-project
         run: |
           make TEST_PROJECT_DIR=${{ env.TEST_PROJECT_DIR }} \
-            create-tmp-project create-tmp-project
+            create-tmp-project-no-input
 
   tag-version:
     runs-on: ubuntu-latest
