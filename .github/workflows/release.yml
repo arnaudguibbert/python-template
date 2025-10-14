@@ -41,6 +41,8 @@ jobs:
       
       - name: create release
         uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with: 
           tag_name: ${{ steps.versioning.outputs.fullSemVer }}
           body: ${{ github.event.pull_request.body }}
