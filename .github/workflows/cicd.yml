@@ -40,7 +40,7 @@ jobs:
   create-release:
     needs: test-template
     runs-on: ubuntu-latest
-    if: github.ref_name == 'main' || github.ref_name == 'develop'
+    # if: github.ref_name == 'main' || github.ref_name == 'develop'
     permissions:
       contents: write
     steps:
