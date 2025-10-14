@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    if: github.event.pull_request.merged == true
+    if: ${{ github.event.pull_request.merged == true && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'develop') }}
     steps:
       - uses: actions/checkout@v5
         with:
