@@ -37,7 +37,8 @@ jobs:
           make TEST_PROJECT_DIR=${{ env.TEST_PROJECT_DIR }} \
             create-tmp-project-no-input
 
-  tag-release:
+  create-release:
+    needs: test-template
     runs-on: ubuntu-latest
     if: github.ref_name == 'main' || github.ref_name == 'develop'
     permissions:
