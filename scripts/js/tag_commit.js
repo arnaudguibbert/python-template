@@ -5,6 +5,6 @@ module.exports = ({github, context}) => {
         owner: context.repo.owner,
         repo: context.repo.repo,
         ref: `refs/tags/v${tag_name}`,
-        sha: context.event.pull_request.merged_commit_sha
+        sha: context.payload.pull_request.merged_commit_sha
     })
 }
