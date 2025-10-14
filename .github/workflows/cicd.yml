@@ -5,16 +5,6 @@ concurrency:
 
 on:
   push:
-    branches:
-      - '**'
-      - '!main'
-      - '!develop'
-  pull_request:
-    types:
-      - closed
-    branches:
-      - 'main'
-      - 'develop'
 
 jobs:
   test-template:
@@ -36,47 +26,6 @@ jobs:
         run: |
           make TEST_PROJECT_DIR=${{ env.TEST_PROJECT_DIR }} \
             create-tmp-project-no-input
-
-  create-release:
-    needs: test-template
-    runs-on: ubuntu-latest
-    # if: github.ref_name == 'main' || github.ref_name == 'develop'
-    permissions:
-      contents: write
-    steps:
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v4
-        with:
-          versionSpec: '6.3.x'
-
-      - name: Determine Version
-        id: versioning
-        uses: gittools/actions/gitversion/execute@v4
-        with:
-          configFilePath: GitVersion.yml
-
-      - name: Tag commit
-        uses: actions/github-script@v5
-        env:
-          TAG_NAME: ${{ steps.versioning.outputs.FullsemVer }}
-        with:
-          script: |
-            const script = require('./scripts/js/tag_commit.js')
-            console.log(script({github, context}))
-      
-      - name: create release
-        uses: actions/create-release@v1
-        # if: github.event.pull_request
-        with: 
-          tag_name: ${{ steps.versioning.outputs.fullSemVer }}
-          body: ${{ github.event.pull_request.body }}
-          release_name: Release ${{ steps.versioning.outputs.fullSemVer }} - ${{ github.event.pull_request.title }}
-          draft: false
-          prerelease: false
           
 
 
