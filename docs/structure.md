@@ -39,7 +39,7 @@ source
 ├── .gitignore                          -> gitignore file
 ├── .python-version                     -> Python version lock file
 ├── Makefile                            -> main Makefile wrapping up commands in makefiles folder
-├── pre-commit.yaml                     -> pre-commit file invoked before every commit
+├── .pre-commit-config.yaml             -> pre-commit file invoked before every commit
 ├── pyproject.toml                      -> theproject metadata and build configuration
 ├── README.md                           -> Documentation
 └── VERSION                             -> Version of the package
@@ -73,7 +73,7 @@ For every file specified above we will describe its content and give insights on
   - [`.gitignore`](#gitignore)
   - [`.python-version`](#python-version)
   - [`Makefile`](#makefile)
-  - [`pre-commit.yaml`](#pre-commityaml)
+  - [`.pre-commit-config.yaml`](#pre-commit)
   - [`pyproject.toml`](#pyprojecttoml)
   - [`README.md`](#readmemd)
   - [`VERSION`](#version)
@@ -311,7 +311,7 @@ This Makefile defines targets for code quality, testing, formatting, and analysi
 
 ---
 
-## `pre-commit.yaml`
+## `pre-commit`
 
 This file defines the configuration for [`pre-commit`](https://pre-commit.com/), a framework for managing and running automated checks before each commit. It helps enforce code quality and consistency by catching issues early in the development cycle.
 
