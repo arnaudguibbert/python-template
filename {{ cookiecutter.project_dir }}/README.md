@@ -72,6 +72,4 @@ For local development, we are providing a list of make command to streamline the
 - **`py-lint-check`** – Runs `ruff check` to lint the code without making automatic fixes.
 - **`py-structure`** – Runs both the `py-format` and `py-lint` commands to ensure code style and linting compliance.
 - **`py-analyze`** – Runs `mypy` to perform static type analysis on the Python code.
-- **`py-debug-test`** – Runs `pytest` for `debug` marked tests with the `-s` flag to enable test debugging and show output in the terminal.
 - **`py-unit-test`** – Runs unit tests with `pytest`, including coverage for the project.
-- **`py-test`** – Runs all tests with `pytest`, including coverage for the project.

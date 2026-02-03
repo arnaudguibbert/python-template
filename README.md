@@ -1,4 +1,4 @@
-# 🐍 Python Project Template for UV
+# 🐍 Python Project Template designed for [astral](https://astral.sh/) ecosystem
 
 This repository provides a [**Cookiecutter**](https://cookiecutter.readthedocs.io/en/stable/) template designed for creating consistent and modern Python project structures. It is tailored to projects using the [**Astral**](https://astral.sh/) tooling ecosystem, namely:
 
@@ -168,11 +168,13 @@ All `make` commands must be run from the **root directory** of your Python proje
 
 When you execute `cookiecutter`, you’ll be prompted to fill in the following inputs:
 
-| Input           | Description                                                                                   | Default | Required |
-|----------------|-----------------------------------------------------------------------------------------------|---------|----------|
-| `project_name`  | The name of your Python package or library. Appears in source code and configuration files.  | `null`  | Yes      |
-| `project_dir`   | The name of the directory where the project will be generated. Typically matches `project_name`. | `null`  | Yes      |
-| `description`   | A short description of your project. Added to the `README.md` and `pyproject.toml`.          | `null`  | Yes      |
+| Input           | Description                                                                                   | Default | Type | Required |
+|----------------|-----------------------------------------------------------------------------------------------|---------|----------|----------|
+| `project_name`  | The name of your Python package or library. Appears in source code and configuration files. | `null`  | string | Yes |
+| `project_dir`   | The name of the directory where the project will be generated. Typically matches `project_name`. | `null`  | string | Yes |
+| `description`   | A short description of your project. Added to the `README.md` and `pyproject.toml`. | `null`  | string | Yes |
+| `include_gh_cicd` | Whether of not to include the Github CICD files (build and push (soon) workflows) | `False` | boolean | No |
+| `include_vscode` | Whether of not to include the vscode settings for this project (`.vscode` folder) | `False` | boolean | No |
 
 ---
 
