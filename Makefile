@@ -11,7 +11,7 @@ create-tmp-project-no-input:
 		description="This is a test description." \
 		include_gh_cicd=False \
 		include_vscode_settings=False \
-		include_pre_commit=True
+		include_pre_commit=False
 
 .PHONY: create-tmp-project
 create-tmp-project:
