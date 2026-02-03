@@ -4,6 +4,7 @@
     "description": "",
     "include_gh_cicd": false,
     "include_vscode_settings": false,
+    "include_pre_commit": false,
     "_copy_without_render": [
         "*.github/workflows"
     ]
