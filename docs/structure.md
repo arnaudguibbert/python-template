@@ -39,13 +39,13 @@ source
 ├── .gitignore                          -> gitignore file
 ├── .python-version                     -> Python version lock file
 ├── Makefile                            -> main Makefile wrapping up commands in makefiles folder
-├── .pre-commit-config.yaml             -> pre-commit file invoked before every commit
+├── .pre-commit-config.yaml[Optional]   -> pre-commit file invoked before every commit
 ├── pyproject.toml                      -> theproject metadata and build configuration
 ├── README.md                           -> Documentation
 └── VERSION                             -> Version of the package
 ```
 
-This can seem a lot of files ate first sight but we will trhough each file and folder. Also you will notice that most of the files won't be touched along your projects.
+This can seem a lot of files at first sight but we will go through each file and folder. Also you will notice that most of the files won't be touched along your projects.
 
 # Files description
 
@@ -73,7 +73,7 @@ For every file specified above we will describe its content and give insights on
   - [`.gitignore`](#gitignore)
   - [`.python-version`](#python-version)
   - [`Makefile`](#makefile)
-  - [`.pre-commit-config.yaml`](#pre-commit)
+  - [`.pre-commit-config.yaml`](#pre-commit-configyaml)
   - [`pyproject.toml`](#pyprojecttoml)
   - [`README.md`](#readmemd)
   - [`VERSION`](#version)
@@ -311,9 +311,12 @@ This Makefile defines targets for code quality, testing, formatting, and analysi
 
 ---
 
-## `pre-commit`
+## `.pre-commit-config.yaml`
 
 This file defines the configuration for [`pre-commit`](https://pre-commit.com/), a framework for managing and running automated checks before each commit. It helps enforce code quality and consistency by catching issues early in the development cycle.
+
+> [!NOTE]
+> This file is **optional** and is not created by default. Set `include_pre_commit` to `True` when generating the project with Cookiecutter to include it, or add your own `.pre-commit-config.yaml` later if you prefer.
 
 ### Usage in the Template
 
@@ -368,7 +371,7 @@ It calls the `_build.yml` workflow to execute all quality checks, providing a co
 The `.vscode` folder contains editor-specific configuration files for [Visual Studio Code](https://code.visualstudio.com/). It helps standardize development experience across team members using VS Code.
 
 > [!NOTE]
-> This folder is **optional** and can be not created by setting `include_vscode` to `False` or be safely deleted if you're not using VS Code. It exists to enhance convenience for developers using that editor.
+> This folder is **optional** and can be not created by setting `include_vscode_settings` to `False` or be safely deleted if you're not using VS Code. It exists to enhance convenience for developers using that editor.
 
 ### `settings.json`
 
