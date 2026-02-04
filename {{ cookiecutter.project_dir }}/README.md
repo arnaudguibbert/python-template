@@ -2,7 +2,7 @@
 
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![Mypy Latest Version](https://img.shields.io/badge/mypy-checked-blue)](https://github.com/python/mypy)
+[![ty](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ty/main/assets/badge/v0.json)](https://github.com/astral-sh/ty)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 {%- if cookiecutter.include_pre_commit|lower == 'true' %}
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
@@ -72,5 +72,5 @@ For local development, we are providing a list of make command to streamline the
 - **`py-lint`** – Runs `ruff check` to perform linting on the code and automatically fix issues.
 - **`py-lint-check`** – Runs `ruff check` to lint the code without making automatic fixes.
 - **`py-structure`** – Runs both the `py-format` and `py-lint` commands to ensure code style and linting compliance.
-- **`py-analyze`** – Runs `mypy` to perform static type analysis on the Python code.
+- **`py-analyze`** – Runs `ty check` to perform static type analysis on the Python code.
 - **`py-unit-test`** – Runs unit tests with `pytest`, including coverage for the project.
