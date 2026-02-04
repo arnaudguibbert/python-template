@@ -140,7 +140,7 @@ make py-doclint
 
 #### 🧠 Type Checking
 
-Check for type errors using static analysis (via `mypy`):
+Check for type errors using static analysis (via `ty`):
 
 ```
 make py-analyze
@@ -185,6 +185,5 @@ When you execute `cookiecutter`, you’ll be prompted to fill in the following i
 - [Cookiecutter](https://cookiecutter.readthedocs.io/en/stable/)
 - [uv by Astral](https://astral.sh/blog/introducing-uv/)
 - [ruff by Astral](https://docs.astral.sh/ruff/)
-- [mypy](https://mypy-lang.org/)
-- [ty (planned)](https://github.com/astral-sh/ty)
+- [ty](https://docs.astral.sh/ty/)
 

@@ -168,14 +168,14 @@ Ruff helps maintain a consistent code style and catch common issues by enforcing
 📘 **Config reference:** [Ruff Configuration](https://docs.astral.sh/ruff/configuration/)
 
 
-### `mypy`
+### `ty`
 
 > [!NOTE]
-> [`mypy`](https://mypy-lang.org/) is a static type checker for Python.
+> [`ty`](https://docs.astral.sh/ty/) is an extremely fast Python type checker and language server, written in Rust, by Astral.
 
-Mypy checks that your code adheres to the type hints you've written. It helps catch bugs early by ensuring type correctness before runtime. The template includes `mypy` for type safety across both the application and tests.
+ty checks that your code adheres to the type hints you've written. It helps catch bugs early by ensuring type correctness before runtime. The template includes `ty` for type safety across both the application and tests.
 
-📘 **Config reference:** [Mypy Configuration](https://mypy.readthedocs.io/en/stable/config_file.html)
+📘 **Config reference:** [ty Configuration](https://docs.astral.sh/ty/reference/configuration/)
 
 
 ### `pytest`
@@ -237,7 +237,7 @@ The `.gitignore` file specifies which files and folders Git should exclude from 
 
 ### Usage in the Template
 
-- Covers Python-specific patterns (e.g., `__pycache__`, `.venv/`, `.mypy_cache/`).
+- Covers Python-specific patterns (e.g., `__pycache__`, `.venv/`).
 - Excludes tool-generated files (e.g., `.ruff_cache/`, `.pytest_cache/`, `uv.lock`).
 - Safe to extend with project-specific exclusions as needed.
 
@@ -284,7 +284,7 @@ This Makefile contains targets for setting up and managing the Python virtual en
 
 ### `python.Makefile`
 
-This Makefile defines targets for code quality, testing, formatting, and analysis. It integrates tools like `ruff`, `mypy`, `pytest`, and `genbadge`.
+This Makefile defines targets for code quality, testing, formatting, and analysis. It integrates tools like `ruff`, `ty`, `pytest`, and `genbadge`.
 
 ### Usage in the Template
 
@@ -298,13 +298,13 @@ This Makefile defines targets for code quality, testing, formatting, and analysi
 | `py-lint`           | Lints the code using `ruff check` and fixes issues automatically.                               |
 | `py-lint-check`     | Runs `ruff check` without making changes.                                                       |
 | `py-structure`      | Runs both `py-format` and `py-lint` to enforce code standards.                                   |
-| `py-analyze`        | Runs static type checks using `mypy`.                                                           |
+| `py-analyze`        | Runs static type checks using `ty`.                                                             |
 | `py-unit-test`      | Runs unit tests with coverage, generates a coverage badge using `genbadge`.                    |
 | `py-doclint`        | Lints docstrings using `pydoclint` with a specified style (`DOCTSTRING_STYLE` env variable).    |
 
 📘 **References:**
 - [Ruff](https://docs.astral.sh/ruff/)
-- [Mypy](https://mypy-lang.org/)
+- [ty](https://docs.astral.sh/ty/)
 - [Pytest](https://docs.pytest.org/en/latest/)
 - [Genbadge](https://github.com/csparpa/genbadge)
 - [pydoclint](https://github.com/PyCQA/pydocstyle)
@@ -344,7 +344,7 @@ The `.github` folder contains GitHub Actions workflows that define automated CI/
 This is a reusable workflow designed to be called by other GitHub workflows. It performs the following tasks:
 
 - Sets up the environment using `uv`
-- Runs formatting (`ruff format`), linting (`ruff check`), type checks (`mypy`)
+- Runs formatting (`ruff format`), linting (`ruff check`), type checks (`ty`)
 - Executes unit tests and generates a coverage badge
 - Optionally performs documentation linting with `pydoclint`
 
