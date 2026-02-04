@@ -36,7 +36,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
         run: make py-lint-check
 
-      - name: mypy
+      - name: ty checking
         if: ${{ !cancelled() }}
         working-directory: ${{ env.WORKING_DIR }}
         run: make py-analyze
@@ -44,11 +44,6 @@ jobs:
       - name: Unit tests
         id: unit_test
         if: ${{ !cancelled() }}
-        working-directory: ${{ env.WORKING_DIR }}
-        run: make py-unit-test
-
-      - name: Badge tests
-        if: ${{ steps.unit_test.outcome }} == "success"
         working-directory: ${{ env.WORKING_DIR }}
         run: make py-unit-test
 

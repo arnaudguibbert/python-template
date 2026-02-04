@@ -22,7 +22,7 @@ py-structure:
 
 .PHONY: py-analyze
 py-analyze:
-	uv run mypy
+	uv run ty check
 
 .PHONY: py-unit-test
 py-unit-test:

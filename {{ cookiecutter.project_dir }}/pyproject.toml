@@ -24,7 +24,7 @@ default-groups = ["dev"]
 [dependency-groups]
 dev = [
     "ruff>=0.9.7",
-    "mypy>=1.15.0",
+    "ty>=0.0.14",
     "pytest>=8.3.4",
     "pytest-cov>=6.0.0",
     "pydoclint>=0.6.2",
@@ -43,19 +43,15 @@ namespaces = false
 # homepage = ""
 # repository = ""
 
-[tool.mypy]
-packages = ["{{ cookiecutter.project_name }}", "tests"]
-ignore_missing_imports = true
-warn_unused_configs = true
-# If you are using namespace packages, set the two following properties to true
-# And uncomment mypy_path
-explicit_package_bases = false
-namespace_packages = false
+[tool.ty.src]
+include = [
+    "{{ cookiecutter.project_name }}",
+    "tests",
+    "**/*.py",
+]
 
-# [[tool.mypy.overrides]]
-# Put in the module list, all the modules without stubs
-# module = []
-# ignore_missing_imports = true
+[tool.ty.terminal]
+output-format = "concise"
 
 [tool.ruff]
 line-length = 80
