@@ -3,26 +3,26 @@ repos:
   hooks:
   - id: pytest-check
     name: run unit tests
-    entry: make py-unit-test
+    entry: bash -c "make py-unit-test"
     language: system
     pass_filenames: false
     always_run: true
     types: [python]
   - id: mypy
     name: run mypy
-    entry: make py-analyze
+    entry: bash -c "make py-analyze"
     language: system
     pass_filenames: false
     types: [python]
   - id: ruff
     name: run ruff format and checks
-    entry: make py-structure
+    entry: bash -c "make py-structure"
     language: system
     pass_filenames: false
     types: [python]
   - id: pydoclint
     name: run pydoclint for documentation linting
-    entry: make py-doclint
+    entry: bash -c "make py-doclint"
     language: system
     pass_filenames: false
     types: [python]
