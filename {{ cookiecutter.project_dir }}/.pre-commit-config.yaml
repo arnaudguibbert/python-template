@@ -8,8 +8,8 @@ repos:
     pass_filenames: false
     always_run: true
     types: [python]
-  - id: mypy
-    name: run mypy
+  - id: ty-check
+    name: run ty
     entry: bash -c "make py-analyze"
     language: system
     pass_filenames: false
