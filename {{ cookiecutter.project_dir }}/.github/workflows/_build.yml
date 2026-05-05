@@ -24,7 +24,9 @@ jobs:
 
       - name: init environment
         working-directory: ${{ env.WORKING_DIR }}
-        run: make env-setup-dev
+        run: |
+          uv venv --relocatable
+          uv sync --all-groups
 
       - name: ruff formatting check
         if: ${{ !cancelled() }}

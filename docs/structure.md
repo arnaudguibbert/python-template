@@ -25,9 +25,6 @@ source
 │       └── cicd.yml                    -> CICD workflow
 ├── .vscode[Optional]
 │   └── settings.json                   -> VSCode workspace settings
-├── makefiles                                   
-│   ├── env.Makefile                    -> Python environment makefile commands
-│   └── python.Makefile                 -> Python makefile commands 
 ├── tests                               -> tests folder
 │   ├── unit                            -> unit tests folder
 │   │   ├── __init__.py                 
@@ -38,7 +35,7 @@ source
 │   └── dummy.py                        -> a dummy file containing a dummy function
 ├── .gitignore                          -> gitignore file
 ├── .python-version                     -> Python version lock file
-├── Makefile                            -> main Makefile wrapping up commands in makefiles folder
+├── Makefile                            -> Makefile defining the targets used for local development
 ├── .pre-commit-config.yaml[Optional]   -> pre-commit file invoked before every commit
 ├── pyproject.toml                      -> theproject metadata and build configuration
 ├── README.md                           -> Documentation
@@ -59,9 +56,6 @@ For every file specified above we will describe its content and give insights on
       - [`cicd.yml`](#cicdyml)
   - [`.vscode`](#vscode)
     - [`settings.json`](#settingsjson)
-  - [`makefiles`](#makefiles)
-    - [`env.Makefile`](#envmakefile)
-    - [`python.Makefile`](#pythonmakefile)
   - [`tests`](#tests)
     - `unit`
       - `__init__.py`
@@ -245,11 +239,14 @@ The `.gitignore` file specifies which files and folders Git should exclude from 
 
 ---
 
-## `makefiles`
+## `Makefile`
 
-The `makefiles` folder contains modular `Makefile` components used to automate and streamline routine development tasks. Splitting concerns across `env.Makefile` and `python.Makefile` helps keep the main `Makefile` organized and maintainable.
+The main `Makefile` at the root of the project defines targets for code quality, testing, formatting, and analysis. It integrates tools like `ruff`, `ty`, `pytest`, and `genbadge` and exposes them through a small set of targets.
 
 Using `make` provides a clean way to **wrap complex or repetitive commands** into named targets, allowing developers to easily execute common operations with a simple and consistent CLI interface.
+
+> [!NOTE]
+> Environment management (creating, syncing, locking, and deleting the virtual environment) is **not** wrapped in `make` targets. It is performed directly with [`uv`](https://docs.astral.sh/uv/). Refer to the [uv documentation](https://docs.astral.sh/uv/).
 
 ### Example Usage
 
@@ -260,31 +257,6 @@ make <make_target_name>
 ```
 
 Replace `<make_target_name>` with the name of the target you want to run. Targets are detailed below.
-
-### `env.Makefile`
-
-This Makefile contains targets for setting up and managing the Python virtual environment using [`uv`](https://github.com/astral-sh/uv).
-
-### Usage in the Template
-
-- Used to initialize, sync, lock, and remove the virtual environment.
-- Abstracts complex or multi-step `uv` operations into single commands.
-
-| Make Target        | Description                                                                 |
-|--------------------|-----------------------------------------------------------------------------|
-| `env-init`         | Creates a relocatable virtual environment using `uv venv`.                  |
-| `env-sync`         | Syncs the environment dependencies for the default group.                   |
-| `env-sync-all`     | Syncs dependencies for all groups (e.g., `dev`, `test`, etc.).              |
-| `env-setup`        | Runs both `env-init` and `env-sync`.                                        |
-| `env-setup-dev`    | Runs both `env-init` and `env-sync-all` for full development setup.         |
-| `env-lock`         | Locks the dependencies, generating or updating the `uv.lock` file.          |
-| `env-delete`       | Deletes the `.venv` directory to clean up the environment.                  |
-
-📘 **Reference:** [uv Documentation](https://github.com/astral-sh/uv)
-
-### `python.Makefile`
-
-This Makefile defines targets for code quality, testing, formatting, and analysis. It integrates tools like `ruff`, `ty`, `pytest`, and `genbadge`.
 
 ### Usage in the Template
 
@@ -303,6 +275,7 @@ This Makefile defines targets for code quality, testing, formatting, and analysi
 | `py-doclint`        | Lints docstrings using `pydoclint` with a specified style (`DOCTSTRING_STYLE` env variable).    |
 
 📘 **References:**
+- [uv](https://docs.astral.sh/uv/)
 - [Ruff](https://docs.astral.sh/ruff/)
 - [ty](https://docs.astral.sh/ty/)
 - [Pytest](https://docs.pytest.org/en/latest/)
