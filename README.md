@@ -49,15 +49,16 @@ If you're unfamiliar with the standard Python project layout or are using this t
 
 The template includes a `Makefile` with several predefined commands that streamline common development workflows, including:
 
-- Installing python environment and dependencies using [uv](https://astral.sh/blog/introducing-uv/)
 - Linting code with [Ruff](https://docs.astral.sh/ruff/)
-- Type checking code with 
-- Running test suite
+- Type checking code with [ty](https://docs.astral.sh/ty/)
+- Running the test suite with [pytest](https://docs.pytest.org/)
+
+Environment management (creating the virtual environment, syncing dependencies, locking, and teardown) is performed directly with [`uv`](https://docs.astral.sh/uv/) rather than via `make`.
 
 > [!IMPORTANT]
 > We highly recommend to use make commands when possible to ensure consistency and security.
 
-Consult this [Makefile section](./docs/structure.md#makefiles) to get more details on make targets available.
+Consult this [Makefile section](./docs/structure.md#makefile) to get more details on make targets available.
 
 > [!NOTE]
 > All make commands should be run from the root directory of your python project.
@@ -73,17 +74,19 @@ Once your project is set up, you’ll frequently perform a set of standard opera
 Set up your Python virtual environment and install the main dependencies:
 
 ```
-make env-setup
+uv venv --relocatable
+uv sync
 ```
 
 To install development dependencies as well (e.g., for testing, linting, formatting), use:
 
 ```
-make env-setup-dev
+uv venv --relocatable
+uv sync --all-groups
 ```
 
 > [!TIP]
-> This uses `uv venv` under the hood to ensure fast and isolated environments.
+> Refer to the [uv documentation](https://docs.astral.sh/uv/) (and the [project workflow guide](https://docs.astral.sh/uv/guides/projects/)) for the full set of environment-management commands.
 
 ---
 

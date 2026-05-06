@@ -14,17 +14,21 @@
 
 # Installation
 
-We are using the `uv` package manager to set up the library.
+We are using the [`uv`](https://docs.astral.sh/uv/) package manager to set up the library.
 
 ## Venv
 
-To setup the virtual environment, run the following make command inside this [directory](./):
+To set up the virtual environment, run the following commands from this [directory](./):
 
-```make
-make env-setup-dev
+```bash
+uv venv --relocatable
+uv sync --all-groups
 ```
 
-This will create a virtual environment inside the `.venv` folder. Run all next commands within this virtual environment.
+This will create a virtual environment inside the `.venv` folder and install every dependency group. Run all subsequent commands within this virtual environment.
+
+> [!TIP]
+> Refer to the [uv project workflow documentation](https://docs.astral.sh/uv/guides/projects/) for more details and how to manage dependencies.
 
 # Quick Start
 
@@ -36,14 +40,11 @@ This will create a virtual environment inside the `.venv` folder. Run all next c
 
 ```
 ├── LICENSE                                         -> Apache V2 LICENSE
-├── Makefile                                        -> Main makefile
+├── Makefile                                        -> make commands
 ├── pyproject.toml                                  -> python library configuration file
 ├── README.md                                       -> Documentation
 ├── uv.lock                                         -> cross-platform lockfile for project dependencies
 ├── {{ cookiecutter.project_name }}/                -> {{ cookiecutter.project_name }} library source code
-├── makefiles/
-│   ├── env.Makefile                                -> env- make commands
-│   └── python.Makefile                             -> py- make commands
 └── tests/                                          -> test folder
 ```
 
@@ -54,16 +55,6 @@ For local development, we are providing a list of make command to streamline the
 > [!NOTE]
 > All make commands should be run from the [root directory](./).
 
-### `env-` make commands
-
-- **`env-init`** – Initializes a Python virtual environment and makes it relocatable.
-- **`env-sync-all`** – Syncs all groups in the virtual environment.
-- **`env-sync`** – Syncs the virtual environment.
-- **`env-setup-dev`** – Sets up the development environment by initializing the virtual environment and syncing all groups.
-- **`env-lock`** – Locks the virtual environment's dependencies.
-- **`env-delete`** – Deletes the `.venv` directory, effectively removing the virtual environment.
-- **`env-install`** – Installs a specified package (`$(PACKAGE)`).
-- **`env-export`** – Exports the environment’s dependencies to a `requirements.txt` file, installs the required packages, creates a zip of the project and dependencies, and cleans up temporary files.
 
 ### `py-` make commands
 
