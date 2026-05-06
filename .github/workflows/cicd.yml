@@ -12,10 +12,10 @@ jobs:
     env:
       TEST_PROJECT_DIR: rootpkg
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@v8.1.0
 
       - name: install cookiecutter
         run: |
@@ -34,20 +34,19 @@ jobs:
       contents: write
     steps:
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v3.2.1
+        uses: gittools/actions/gitversion/setup@v4.5.0
         with:
           versionSpec: '6.3.x'
 
       - name: Determine Version
         id: versioning
-        uses: gittools/actions/gitversion/execute@v3.2.1
+        uses: gittools/actions/gitversion/execute@v4.5.0
         with:
-          useConfigFile: true
           configFilePath: GitVersion.yaml
 
       - name: Log Version
@@ -55,7 +54,7 @@ jobs:
           echo ${{ steps.versioning.outputs.FullsemVer }}
 
       - name: Tag commit
-        uses: actions/github-script@v5
+        uses: actions/github-script@v9
         env:
           TAG_NAME: ${{ steps.versioning.outputs.FullsemVer }}
         with:
