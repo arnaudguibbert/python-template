@@ -39,7 +39,6 @@ This will create a virtual environment inside the `.venv` folder and install eve
 ## Folder structure
 
 ```
-├── LICENSE                                         -> Apache V2 LICENSE
 ├── Makefile                                        -> make commands
 ├── pyproject.toml                                  -> python library configuration file
 ├── README.md                                       -> Documentation

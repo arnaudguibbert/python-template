@@ -40,4 +40,4 @@ py-unit-test:
 
 .PHONY: py-doclint
 py-doclint:
-	pydoclint --style $(DOCTSTRING_STYLE) $(PROJECT_NAME)
+	uv run pydoclint --style $(DOCTSTRING_STYLE) $(PROJECT_NAME)
