@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [tool.setuptools.dynamic]
-readme = {file = "README"}
+readme = {file = "README.md"}
 version = {file = "VERSION"}
 
 [tool.uv]
@@ -99,9 +99,9 @@ max-complexity = 10
 [tool.pytest.ini_options]
 markers = [
     "debug: tests being tested",
-    "dummy: dummy test to make sur tests are working"
+    "dummy: dummy test to make sure tests are working"
 ]
-addopts = "-ra -q -c pytest.ini"
+addopts = "-ra -q"
 testpaths = [
     "tests",
 ]
